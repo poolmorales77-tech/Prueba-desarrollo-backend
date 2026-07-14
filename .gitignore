@@ -1,0 +1,12 @@
+# Node / frontend
+**/node_modules/
+**/dist/
+**/.angular/
+**/.cache/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
