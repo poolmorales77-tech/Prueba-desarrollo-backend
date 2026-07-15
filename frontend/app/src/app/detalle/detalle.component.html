@@ -1,0 +1,32 @@
+<div style="border:1px solid #e2e8f0; padding:1rem; margin-bottom:1rem; background:#f8fafc;">
+  <p><strong>DEBUG</strong></p>
+  <p>loading: {{ loading }}</p>
+  <p>errorMessage: {{ errorMessage || '(ninguno)' }}</p>
+  <p>padres.length: {{ padres.length }}</p>
+  <p>item: {{ item | json }}</p>
+</div>
+
+<div *ngIf="loading">
+  <p>Cargando información...</p>
+</div>
+
+<div *ngIf="!loading && errorMessage">
+  <p style="color: red;">{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="!loading && !errorMessage && padres.length > 0">
+  <h2>Padres vinculados:</h2>
+  <p><strong>Child ID:</strong> {{ item?.childId }}</p>
+  <p><strong>Total padres:</strong> {{ item?.totalPadres ?? padres.length }}</p>
+  <ul>
+    <li *ngFor="let padre of padres">
+      <strong>Nombre:</strong> {{ padre.name }} <br>
+      <strong>Email:</strong> {{ padre.email }} <br>
+      <strong>Rol:</strong> {{ padre.role }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!loading && !errorMessage && padres.length === 0">
+  <p>No se encontraron padres vinculados para este ID.</p>
+</div>
